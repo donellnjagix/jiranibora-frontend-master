@@ -10,8 +10,9 @@ import { sessionType } from "../Components/types";
 const Home = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    //  redirect accordingly
+    // redirect accordingly
     const handleRedirect = async () => {
       setLoading(true);
       const session = (await getSession()) as sessionType;
@@ -23,7 +24,8 @@ const Home = () => {
       }
     };
     handleRedirect();
-  }, []);
+  }, [router]); // Add 'router' to the dependency array
+
   if (loading) {
     return (
       <Flex
